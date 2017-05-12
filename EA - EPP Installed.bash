@@ -2,13 +2,14 @@
 # EndPoint Protector detector (simple)
 # this might be redundant, can also look in /Library/CoSoSys/EndpointProtector/
 # if /etc/epp exists, true, if not, false
-EPPDIR="/etc/epp"
-RESULT=""
 
-if [ -d ${EPPDIR} ]; then
-    RESULT="True"
+eppdir="/etc/epp"
+result=""
+
+if [ -d ${eppdir} ]; then
+    result="True"
 else
-    RESULT="False"
+    result="False"
 fi
 
-echo "<result>${RESULT}</result>"
+echo "<result>${result}</result>"

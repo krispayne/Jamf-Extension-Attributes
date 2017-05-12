@@ -3,14 +3,14 @@
 # adapted from:
 # script by emily k 2014-07-29
 # to detect if the Awesome Screenshot Extension is installed on Google Chrome
-# 
 
-currentUser=`ls -l /dev/console | cut -d " " -f 4`
+result=""
+currentUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
 if [[ -d "/Users/$currentUser/Library/Application Support/Google/Chrome/Default/Extensions/bhghoamapcdpbohphigoooaddinpkbai" ]] ; then
-    STATUS="Installed."
+    result="Installed."
 else
-    STATUS="Not installed."
+    result="Not installed."
 fi
 
-echo "<result>$STATUS</result>"
+echo "<result>${result}</result>"

@@ -6,11 +6,10 @@
 #Determine logged in user
 loggedInUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
-check=$( ls -al /Users/${loggedInUser}/Library/Preferences/ | grep dock.plist | awk '{ print $3 }' )
+result=$( ls -al /Users/${loggedInUser}/Library/Preferences/ | grep dock.plist | awk '{ print $3 }' )
 
-if [ "$check" = "root" ];then
+if [ "$result" = "root" ];then
     echo "<result>root</result>"
 else
-    echo "<result>$check</result>"
+    echo "<result>${result}</result>"
 fi
-

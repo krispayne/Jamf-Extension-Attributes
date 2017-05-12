@@ -1,11 +1,11 @@
 #!/bin/bash
 # Check to see if the IR receiver is enabled.
 
-IRCMD="$(/usr/bin/defaults read /Library/Preferences/com.apple.driver.AppleIRController.plist DeviceEnabled)"
+ircmd="$(/usr/bin/defaults read /Library/Preferences/com.apple.driver.AppleIRController.plist DeviceEnabled)"
 
-if [[ ${IRCMD} = "0" ]]; then
+if [[ ${ircmd} = "0" ]]; then
     result="Disabled"
-elif [[ ${IRCMD} = "1" ]]; then
+elif [[ ${ircmd} = "1" ]]; then
     result="Enabled"
 else
     result="Unknown"
